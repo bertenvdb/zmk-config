@@ -20,12 +20,11 @@
 # ---
 # include:
 #   - board: nice_nano_v2
-#     shield: sofle_left
-#   - board: nice_nano_v2
-#     shield: sofle_right
+#     shield: settings_reset
 
-# Reset user settings to default
 ---
 include:
   - board: nice_nano_v2
-    shield: settings_reset
+    shield: sofle_left
+  - board: nice_nano_v2
+    shield: sofle_right
