@@ -19,7 +19,7 @@
 | Firmware | ZMK v0.3 |
 | ZMK Studio | Ingeschakeld + permanent unlocked (`CONFIG_ZMK_STUDIO=y`, `CONFIG_ZMK_STUDIO_LOCKING=n`) |
 | Community module | zmk-nice-oled@v0.3/dev |
-| Shields | sofle_rgb_left / sofle_rgb_right (custom) |
+| Shields | sofle_left / sofle_right |
 
 ---
 
