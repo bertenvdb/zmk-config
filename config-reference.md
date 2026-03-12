@@ -16,9 +16,10 @@
 
 | Setting | Waarde |
 |---|---|
-| Firmware | ZMK |
-| ZMK Studio | Ingeschakeld + permanent unlocked (`ZMK_STUDIO_LOCKING=n`) |
-| Community module | zmk-nice-oled |
+| Firmware | ZMK v0.3 |
+| ZMK Studio | Ingeschakeld + permanent unlocked (`CONFIG_ZMK_STUDIO=y`, `CONFIG_ZMK_STUDIO_LOCKING=n`) |
+| Community module | zmk-nice-oled@v2.0.0 |
+| Shields | sofle_rgb_left / sofle_rgb_right |
 
 ---
 
@@ -71,8 +72,8 @@ Encoder shortcuts in dit document gebruiken twee notaties:
 | Layer | Naam | Activatie |
 |---|---|---|
 | 0 | Base | Standaard |
-| 1 | Raise | `RAISE` thumb key (rechts) |
-| 2 | Lower | `LOWER` thumb key (links) |
+| 1 | Lower | `LOWER` thumb key (links) |
+| 2 | Raise | `RAISE` thumb key (rechts) |
 | 3 | Adjust | `LOWER` + `RAISE` tegelijk |
 
 ---
@@ -125,7 +126,7 @@ SHF  Z    X    C    V    B    [L-ENC]  [R-ENC]  N    M    <    >    ?    SHF
 
 ---
 
-### Layer 1 — Raise (Symbols / F-keys)
+### Layer 1 — Lower (Symbols / F-keys)
 
 #### Toetsen (zonder SHIFT)
 
@@ -167,7 +168,7 @@ Volledig leeg / transparant.
 
 ---
 
-### Layer 2 — Lower (Navigation)
+### Layer 2 — Raise (BT / Navigation)
 
 #### Toetsen (zonder SHIFT)
 
