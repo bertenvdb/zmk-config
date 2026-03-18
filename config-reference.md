@@ -51,36 +51,39 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
 | `CONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED` | `y` | Dedicated work queue voor betere display prestaties |
-| `CONFIG_CUSTOM_WIDGET_SLEEP_ART` | `y` | Toont sleep art wanneer het display idle gaat |
+| `CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM` | `y` | Activeert custom status screen ondersteuning |
+| `CONFIG_NICE_OLED_ON` | `y` | Schakelt de zmk-nice-oled module in |
+| `CONFIG_NICE_OLED_SHOW_SLEEP_ART_ON_IDLE` | `y` | Toont sleep art wanneer het display idle gaat |
 
 ### Status Widgets (Beide helften)
 
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
-| `CONFIG_NICE_VIEW_WIDGET_STATUS` | `y` | Batterij status en verbindingsmode (BLE/USB) op beide displays |
+| `CONFIG_NICE_OLED_WIDGET_STATUS` | `y` | Batterij status en verbindingsmode (BLE/USB) op beide displays |
 
 ### Central Side Widgets (Linker helft)
 
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
-| `CONFIG_NICE_VIEW_WIDGET_LAYER` | `y` | Toont de actieve layer naam |
-| `CONFIG_NICE_VIEW_WIDGET_WPM` | `y` | Toont WPM (words per minute) statistieken |
-| `CONFIG_NICE_VIEW_WPM_SHOW_NUMBER` | `y` | Numerieke WPM waarde weergave |
+| `CONFIG_NICE_OLED_WIDGET_LAYER` | `y` | Toont de actieve layer naam |
+| `CONFIG_NICE_OLED_WIDGET_WPM` | `y` | Toont WPM (words per minute) statistieken |
+| `CONFIG_NICE_OLED_WIDGET_WPM_NUMBER` | `y` | Numerieke WPM waarde weergave |
 
 ### Peripheral Side Widgets (Rechter helft)
 
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
-| `CONFIG_CUSTOM_WIDGET_WPM_PERIPHERAL` | `y` | WPM widget op de peripheral zijde |
-| `CONFIG_CUSTOM_WIDGET_ANIMATION_PERIPHERAL` | `y` | Activeert animatie ondersteuning op peripheral |
-| `CONFIG_CUSTOM_WIDGET_BATTERY_ANIMATION` | `y` | Slimme batterij animatie op peripheral |
-| `CONFIG_CUSTOM_WIDGET_SPACEMAN` | `y` | Spaceman/astronaut animatie op peripheral |
+| `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_WPM` | `y` | WPM widget op de peripheral zijde |
+| `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL` | `y` | Activeert animatie ondersteuning op peripheral |
+| `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_SMART_BATTERY` | `y` | Slimme batterij animatie op peripheral |
+| `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_SPACEMAN` | `y` | Spaceman/astronaut animatie op peripheral |
 
 ### HID Indicators
 
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
-| `CONFIG_NICE_VIEW_WIDGET_HID_INDICATORS` | `y` | HID status indicatoren (Caps Lock, Num Lock, Scroll Lock, etc.) |
+| `CONFIG_ZMK_HID_INDICATORS` | `y` | Activeert ZMK HID indicatoren ondersteuning (vereist voor OLED HID widget) |
+| `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS` | `y` | HID status indicatoren (Caps Lock, Num Lock, Scroll Lock, etc.) |
 
 ---
 
