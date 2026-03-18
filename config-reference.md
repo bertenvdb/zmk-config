@@ -19,7 +19,7 @@
 | Firmware | ZMK v0.3 |
 | ZMK Studio | Ingeschakeld + permanent unlocked (`CONFIG_ZMK_STUDIO=y`, `CONFIG_ZMK_STUDIO_LOCKING=n`) |
 | Community module | zmk-nice-oled@v0.3/dev |
-| Shields | sofle_left / sofle_right |
+| Shields | sofle_left nice_oled / sofle_right nice_oled |
 
 ---
 
@@ -53,8 +53,9 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 | `CONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED` | `y` | Dedicated work queue voor betere display prestaties |
 | `CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM` | `y` | Activeert custom status screen ondersteuning |
 | `CONFIG_NICE_OLED_ON` | `y` | Schakelt de zmk-nice-oled module in |
-| `CONFIG_LV_DISPLAY_ROTATION_90` | `y` | Roteert display 90° rechtsom voor verticale montage |
 | `CONFIG_NICE_OLED_SHOW_SLEEP_ART_ON_IDLE` | `y` | Toont sleep art wanneer het display idle gaat |
+
+**Opmerking:** Display rotatie voor verticaal gemonteerde OLED displays moet geconfigureerd worden via devicetree overlays, niet via Kconfig. `CONFIG_LV_DISPLAY_ROTATION_90` is geen valide ZMK Kconfig symbool.
 
 ### Display Power Management & Stability
 
@@ -63,8 +64,9 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 | `CONFIG_ZMK_DISPLAY_BLANK_ON_IDLE` | `y` | Display blankt automatisch bij inactiviteit en kan weer ontwaken (fix voor display not waking up) |
 | `CONFIG_ZMK_IDLE_TIMEOUT` | `30000` | Tijd (in ms) voordat display blankt — 30 seconden |
 | `CONFIG_ZMK_SLEEP` | `y` | Activeert deep sleep ondersteuning voor energiebesparing |
-| `CONFIG_ZMK_SLEEP_TIMEOUT` | `900000` | Tijd (in ms) voordat keyboard in deep sleep gaat — 15 minuten |
 | `CONFIG_ZMK_DISPLAY_INVERT` | `n` | Display inversie uitgeschakeld (voorkomt garbled pixels na power cycling) |
+
+**Opmerking:** Deep sleep timeout configuratie moet gedaan worden met `CONFIG_ZMK_IDLE_SLEEP_TIMEOUT` indien nodig. Het symbool `CONFIG_ZMK_SLEEP_TIMEOUT` bestaat niet in ZMK.
 
 ### Status Widgets (Beide helften)
 
