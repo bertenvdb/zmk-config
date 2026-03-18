@@ -62,7 +62,7 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
 | `CONFIG_ZMK_DISPLAY_BLANK_ON_IDLE` | `y` | Display blankt automatisch bij inactiviteit en kan weer ontwaken (fix voor display not waking up) |
-| `CONFIG_ZMK_IDLE_TIMEOUT` | `30000` | Tijd (in ms) voordat display blankt — 30 seconden |
+| `CONFIG_ZMK_IDLE_TIMEOUT` | `600000` | Tijd (in ms) voordat display blankt — 10 minuten |
 | `CONFIG_ZMK_SLEEP` | `y` | Activeert deep sleep ondersteuning voor energiebesparing |
 | `CONFIG_ZMK_DISPLAY_INVERT` | `n` | Display inversie uitgeschakeld (voorkomt garbled pixels na power cycling) |
 
