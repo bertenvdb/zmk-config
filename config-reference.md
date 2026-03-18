@@ -79,8 +79,8 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
 | `CONFIG_NICE_OLED_WIDGET_LAYER` | `y` | Toont de actieve layer naam |
-| `CONFIG_NICE_OLED_WIDGET_WPM` | `y` | Toont WPM (words per minute) statistieken |
-| `CONFIG_NICE_OLED_WIDGET_WPM_NUMBER` | `y` | Numerieke WPM waarde weergave |
+| `CONFIG_NICE_OLED_WIDGET_WPM` | `n` | WPM (words per minute) widget uitgeschakeld |
+| `CONFIG_NICE_OLED_WIDGET_WPM_NUMBER` | `n` | Numerieke WPM waarde weergave uitgeschakeld |
 
 ### Peripheral Side Widgets (Rechter helft)
 
@@ -88,6 +88,7 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 |---|---|---|
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL` | `y` | Activeert animatie ondersteuning op peripheral |
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_SMART_BATTERY` | `y` | Slimme batterij animatie op peripheral |
+| `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_GEM` | `n` | Gem animatie expliciet uitgeschakeld — laat spaceman animatie toe |
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_SPACEMAN` | `y` | Spaceman/astronaut animatie op peripheral |
 
 **Opmerking:** `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_WPM` is **niet** beschikbaar op de peripheral zijde. In de split keyboard architectuur verwerkt de peripheral (rechter helft) geen keycodes lokaal — alle toetsaanslagen worden naar de central (linker helft) gestuurd. WPM tracking vereist toegang tot keycode events die alleen op de central zijde beschikbaar zijn. Poging om de peripheral WPM widget in te schakelen resulteert in linker errors tijdens compilatie. Alleen de central zijde heeft WPM widget ondersteuning.
@@ -98,6 +99,8 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 |---|---|---|
 | `CONFIG_ZMK_HID_INDICATORS` | `y` | Activeert ZMK HID indicatoren ondersteuning (vereist voor OLED HID widget) |
 | `CONFIG_NICE_OLED_WIDGET_HID_INDICATORS` | `y` | HID status indicatoren (Caps Lock, Num Lock, Scroll Lock, etc.) |
+| `CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL_MACOS` | `n` | macOS-stijl modifier symbolen weergave op OLED (Ctrl, Alt, Cmd, Shift) |
+| `CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL_WINDOWS` | `y` | Windows-stijl modifier symbolen weergave op OLED (Ctrl, Alt, Win, Shift) |
 
 ---
 
@@ -109,7 +112,6 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 |---|---|
 | Status | Batterij percentage en verbindingsmode (BLE/USB) |
 | Layer naam | Naam van de actieve layer (Base, Lower, Raise, Adjust) |
-| WPM | Words per minute met numerieke waarde |
 | HID Indicatoren | Status van Caps Lock, Num Lock, etc. |
 
 ### Rechter helft (peripheral)
