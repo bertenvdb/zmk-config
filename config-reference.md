@@ -1,4 +1,4 @@
-# ZMK Config Reference — Sofle RGB
+ # ZMK Config Reference — Sofle RGB
 
 ## Hardware
 
