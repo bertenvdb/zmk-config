@@ -35,6 +35,52 @@
 ### Kleur
 
 - **Per-key LEDs:** Neon pink = HSB `(300°, 100%, 100%)` — aan te passen op basis van visueel resultaat
+- **Underglow:** Magenta/purple = HSB `(305°, 100%, 100%)` — standaard opstartwaarden ingesteld via:
+  - `CONFIG_ZMK_RGB_UNDERGLOW_HUE_START=305` — Hue (kleur op het kleurenwiel, 0–359°)
+  - `CONFIG_ZMK_RGB_UNDERGLOW_SAT_START=100` — Saturatie (kleurverzadiging, 0–100%)
+  - `CONFIG_ZMK_RGB_UNDERGLOW_BRT_START=100` — Brightness (helderheid, 0–100%)
+
+---
+
+## OLED Configuration
+
+Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechnology17) voor uitgebreide OLED widget ondersteuning.
+
+### General Display Settings
+
+| Config Option | Waarde | Beschrijving |
+|---|---|---|
+| `CONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED` | `y` | Dedicated work queue voor betere display prestaties |
+| `CONFIG_CUSTOM_WIDGET_SLEEP_ART` | `y` | Toont sleep art wanneer het display idle gaat |
+
+### Status Widgets (Beide helften)
+
+| Config Option | Waarde | Beschrijving |
+|---|---|---|
+| `CONFIG_NICE_VIEW_WIDGET_STATUS` | `y` | Batterij status en verbindingsmode (BLE/USB) op beide displays |
+
+### Central Side Widgets (Linker helft)
+
+| Config Option | Waarde | Beschrijving |
+|---|---|---|
+| `CONFIG_NICE_VIEW_WIDGET_LAYER` | `y` | Toont de actieve layer naam |
+| `CONFIG_NICE_VIEW_WIDGET_WPM` | `y` | Toont WPM (words per minute) statistieken |
+| `CONFIG_NICE_VIEW_WPM_SHOW_NUMBER` | `y` | Numerieke WPM waarde weergave |
+
+### Peripheral Side Widgets (Rechter helft)
+
+| Config Option | Waarde | Beschrijving |
+|---|---|---|
+| `CONFIG_CUSTOM_WIDGET_WPM_PERIPHERAL` | `y` | WPM widget op de peripheral zijde |
+| `CONFIG_CUSTOM_WIDGET_ANIMATION_PERIPHERAL` | `y` | Activeert animatie ondersteuning op peripheral |
+| `CONFIG_CUSTOM_WIDGET_BATTERY_ANIMATION` | `y` | Slimme batterij animatie op peripheral |
+| `CONFIG_CUSTOM_WIDGET_SPACEMAN` | `y` | Spaceman/astronaut animatie op peripheral |
+
+### HID Indicators
+
+| Config Option | Waarde | Beschrijving |
+|---|---|---|
+| `CONFIG_NICE_VIEW_WIDGET_HID_INDICATORS` | `y` | HID status indicatoren (Caps Lock, Num Lock, Scroll Lock, etc.) |
 
 ---
 
@@ -44,15 +90,19 @@
 
 | Widget | Beschrijving |
 |---|---|
-| Layer naam | Naam van de actieve layer |
-| Output status | BLE / USB output indicator |
-| Modifiers Indicator | Actieve modifiers (Shift, Ctrl, Alt, GUI) |
+| Status | Batterij percentage en verbindingsmode (BLE/USB) |
+| Layer naam | Naam van de actieve layer (Base, Lower, Raise, Adjust) |
+| WPM | Words per minute met numerieke waarde |
+| HID Indicatoren | Status van Caps Lock, Num Lock, etc. |
 
 ### Rechter helft (peripheral)
 
 | Widget | Beschrijving |
 |---|---|
-| Astronaut | Animatie (zmk-nice-oled) |
+| Status | Batterij percentage en verbindingsmode |
+| WPM | Words per minute statistieken |
+| Batterij animatie | Visuele batterij status animatie |
+| Spaceman animatie | Astronaut animatie (idle animation) |
 
 ---
 
@@ -229,4 +279,3 @@ Alle encoder acties op Adjust layer: leeg (geen binding).
 
 - [ ] Neon pink exacte HSB waarde bevestigen op hardware (startwaarde: H=300, S=100, B=100)
 - [ ] `WIN + \`` in encoder: backtick karakter bevestigen (kan platform-afhankelijk zijn)
-- [ ] Peripheral OLED (rechts) toont alleen Astronaut animatie — geen andere widgets mogelijk zonder custom BLE GATT service
