@@ -86,10 +86,11 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
-| `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_WPM` | `y` | WPM widget op de peripheral zijde |
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL` | `y` | Activeert animatie ondersteuning op peripheral |
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_SMART_BATTERY` | `y` | Slimme batterij animatie op peripheral |
 | `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_SPACEMAN` | `y` | Spaceman/astronaut animatie op peripheral |
+
+**Opmerking:** `CONFIG_NICE_OLED_WIDGET_ANIMATION_PERIPHERAL_WPM` is **niet** beschikbaar op de peripheral zijde. In de split keyboard architectuur verwerkt de peripheral (rechter helft) geen keycodes lokaal — alle toetsaanslagen worden naar de central (linker helft) gestuurd. WPM tracking vereist toegang tot keycode events die alleen op de central zijde beschikbaar zijn. Poging om de peripheral WPM widget in te schakelen resulteert in linker errors tijdens compilatie. Alleen de central zijde heeft WPM widget ondersteuning.
 
 ### HID Indicators
 
@@ -116,9 +117,10 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 | Widget | Beschrijving |
 |---|---|
 | Status | Batterij percentage en verbindingsmode |
-| WPM | Words per minute statistieken |
 | Batterij animatie | Visuele batterij status animatie |
 | Spaceman animatie | Astronaut animatie (idle animation) |
+
+**Opmerking:** WPM widget is niet beschikbaar op peripheral zijde (zie OLED Configuration sectie voor uitleg).
 
 ---
 
