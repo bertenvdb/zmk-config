@@ -79,8 +79,8 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 | Config Option | Waarde | Beschrijving |
 |---|---|---|
 | `CONFIG_NICE_OLED_WIDGET_LAYER` | `y` | Toont de actieve layer naam |
-| `CONFIG_NICE_OLED_WIDGET_WPM` | `n` | WPM (words per minute) widget uitgeschakeld |
-| `CONFIG_NICE_OLED_WIDGET_WPM_NUMBER` | `n` | Numerieke WPM waarde weergave uitgeschakeld |
+| `CONFIG_NICE_OLED_WIDGET_WPM` | `y` | WPM (words per minute) widget |
+| `CONFIG_NICE_OLED_WIDGET_WPM_NUMBER` | `y` | Numerieke WPM waarde weergave |
 
 ### Peripheral Side Widgets (Rechter helft)
 
@@ -112,6 +112,7 @@ Deze configuratie maakt gebruik van de **zmk-nice-oled** custom module (mctechno
 |---|---|
 | Status | Batterij percentage en verbindingsmode (BLE/USB) |
 | Layer naam | Naam van de actieve layer (Base, Lower, Raise, Adjust) |
+| WPM | Typing speed in words per minute met numerieke waarde |
 | HID Indicatoren | Status van Caps Lock, Num Lock, etc. |
 
 ### Rechter helft (peripheral)
