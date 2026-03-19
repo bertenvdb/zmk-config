@@ -37,11 +37,30 @@ jobs:
           name: sofle-keymap
           path: .
 
-      - name: Rename visualization to fixed name
+      - name: Debug - Show downloaded files
         run: |
-          if [ -f "keymap-drawer/sofle.svg" ]; then
-            mv keymap-drawer/sofle.svg keymap-visualization.svg
+          echo "=== Current directory ==="
+          ls -la
+          echo ""
+          echo "=== All files (recursive) ==="
+          find . -type f -name "*.svg" 2>/dev/null || echo "No SVG files found"
+          echo ""
+          echo "=== All files in current dir ==="
+          find . -type f 2>/dev/null | head -20
+
+      - name: Find and rename visualization
+        run: |
+          # Find the SVG file anywhere in the downloaded artifact
+          SVG_FILE=$(find . -type f -name "*.svg" 2>/dev/null | head -1)
+          
+          if [ -z "$SVG_FILE" ]; then
+            echo "ERROR: No SVG file found in artifact"
+            exit 1
           fi
+          
+          echo "Found SVG file: $SVG_FILE"
+          mv "$SVG_FILE" keymap-visualization.svg
+          echo "Renamed to keymap-visualization.svg"
 
       - name: Commit and push visualization
         run: |
