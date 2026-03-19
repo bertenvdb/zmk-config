@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - 'config/*.keymap'
+      - '.github/workflows/draw-keymap.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
