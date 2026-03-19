@@ -1,0 +1,50 @@
+name: Draw Keymap Visualization
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'config/*.keymap'
+
+permissions:
+  contents: write
+
+jobs:
+  draw-keymap:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    with:
+      keymap_patterns: 'config/sofle.keymap'
+      output_folder: keymap-drawer
+      destination: artifact
+      artifact_name: sofle-keymap
+
+  rename-and-commit:
+    needs: draw-keymap
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: sofle-keymap
+          path: .
+
+      - name: Rename visualization to fixed name
+        run: |
+          if [ -f "keymap-drawer/sofle.svg" ]; then
+            mv keymap-drawer/sofle.svg keymap-visualization.svg
+          fi
+
+      - name: Commit and push visualization
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add keymap-visualization.svg
+          git diff --staged --quiet || git commit -m "Update keymap visualization"
+          git push
