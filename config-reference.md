@@ -17,6 +17,7 @@
 | Setting | Waarde |
 |---|---|
 | Firmware | ZMK v0.3 |
+| BLE | Experimental connection (`CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y`) — fix voor random peripheral disconnecting |
 | ZMK Studio | Ingeschakeld + permanent unlocked (`CONFIG_ZMK_STUDIO=y`, `CONFIG_ZMK_STUDIO_LOCKING=n`) |
 | Community module | zmk-nice-oled@v0.3/dev |
 | Shields | sofle_left nice_oled / sofle_right nice_oled |
