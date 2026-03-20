@@ -170,35 +170,35 @@
         // Base layer left encoder rotation
         enc_base_l: enc_base_l {
             compatible = "zmk,behavior-sensor-rotate";
-            #sensor-cells = <0>;
+            #sensor-binding-cells = <0>;
             bindings = <&enc_rot_bl_ccw>, <&enc_rot_bl_cw>;
         };
 
         // Base layer right encoder rotation
         enc_base_r: enc_base_r {
             compatible = "zmk,behavior-sensor-rotate";
-            #sensor-cells = <0>;
+            #sensor-binding-cells = <0>;
             bindings = <&enc_rot_br_ccw>, <&enc_rot_br_cw>;
         };
 
         // Lower layer left encoder rotation
         enc_lower_l: enc_lower_l {
             compatible = "zmk,behavior-sensor-rotate";
-            #sensor-cells = <0>;
+            #sensor-binding-cells = <0>;
             bindings = <&enc_rot_ll_ccw>, <&enc_rot_ll_cw>;
         };
 
         // Lower layer right encoder rotation (CCW: none, CW: mod-morph)
         enc_lower_r: enc_lower_r {
             compatible = "zmk,behavior-sensor-rotate";
-            #sensor-cells = <0>;
+            #sensor-binding-cells = <0>;
             bindings = <&none>, <&enc_rot_lr_cw>;
         };
 
         // No-op encoder rotation (for Raise/Adjust layers)
         enc_none: enc_none {
             compatible = "zmk,behavior-sensor-rotate";
-            #sensor-cells = <0>;
+            #sensor-binding-cells = <0>;
             bindings = <&none>, <&none>;
         };
     };
