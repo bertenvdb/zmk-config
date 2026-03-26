@@ -21,7 +21,7 @@
 | BLE | Experimental connection (`CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y`) — fix voor random peripheral disconnecting |
 | ZMK Studio | Ingeschakeld + permanent unlocked (`CONFIG_ZMK_STUDIO=y`, `CONFIG_ZMK_STUDIO_LOCKING=n`) |
 | Community modules | zmk-nice-oled@v0.3/dev, prospector-zmk-module@main |
-| Shields (dongle) | prospector_adapter |
+| Shields (dongle) | sofle_dongle prospector_adapter |
 | Shields (halves) | sofle_left nice_oled / sofle_right nice_oled |
 | Dongle board | seeeduino_xiao_ble |
 | Architectuur | Dongle als central (USB) → BLE → keyboard halves als peripherals |

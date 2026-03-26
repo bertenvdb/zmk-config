@@ -1,0 +1,18 @@
+# Copyright (c) 2024
+# SPDX-License-Identifier: MIT
+
+if SHIELD_SOFLE_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Sofle"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_STUDIO
+    default y
+
+endif

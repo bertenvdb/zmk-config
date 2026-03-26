@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2024
+ * SPDX-License-Identifier: MIT
+ *
+ * Seeeduino XIAO BLE column GPIO mapping for the Sofle dongle.
+ * No physical keys are connected — these are stub pins to
+ * satisfy ZMK's matrix kscan compilation requirement.
+ */
+
+&kscan0 {
+    col-gpios
+        = <&xiao_d 8 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 9 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 10 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 2 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 3 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 6 GPIO_ACTIVE_HIGH>
+        ;
+};
