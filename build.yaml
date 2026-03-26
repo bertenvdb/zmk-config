@@ -25,7 +25,7 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: sofle_dongle prospector_adapter
+    shield: prospector_adapter
   - board: nice_nano_v2
     shield: sofle_left nice_oled
   - board: nice_nano_v2
