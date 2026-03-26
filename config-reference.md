@@ -4,11 +4,12 @@
 
 | Component | Spec |
 |---|---|
-| Controller | nice!nano v2 (nRF52840), beide helften |
-| Displays | SSD1306 128×32 OLED, verticaal gemonteerd |
+| Controller (halves) | nice!nano v2 (nRF52840), beide helften |
+| Controller (dongle) | Seeeduino XIAO BLE (nRF52840) — Prospector dongle als central |
+| Displays | SSD1306 128×32 OLED (keyboard halves) + Prospector dongle display |
 | LEDs | Per-key RGB + underglow (Sofle RGB) |
 | Encoders | 2× rotary encoder (links + rechts) |
-| Connectiviteit | Draadloos BLE split + USB naar Windows host |
+| Connectiviteit | Dongle (USB) → BLE → beide keyboard halves (peripheral) |
 
 ---
 
@@ -19,8 +20,11 @@
 | Firmware | ZMK v0.3 |
 | BLE | Experimental connection (`CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y`) — fix voor random peripheral disconnecting |
 | ZMK Studio | Ingeschakeld + permanent unlocked (`CONFIG_ZMK_STUDIO=y`, `CONFIG_ZMK_STUDIO_LOCKING=n`) |
-| Community module | zmk-nice-oled@v0.3/dev |
-| Shields | sofle_left nice_oled / sofle_right nice_oled |
+| Community modules | zmk-nice-oled@v0.3/dev, prospector-zmk-module@main |
+| Shields (dongle) | sofle_dongle prospector_adapter |
+| Shields (halves) | sofle_left nice_oled / sofle_right nice_oled |
+| Dongle board | seeeduino_xiao_ble |
+| Architectuur | Dongle als central (USB) → BLE → keyboard halves als peripherals |
 
 ---
 
@@ -301,3 +305,5 @@ Alle encoder acties op Adjust layer: leeg (geen binding).
 
 - [ ] Neon pink exacte HSB waarde bevestigen op hardware (startwaarde: H=300, S=100, B=100)
 - [ ] `WIN + \`` in encoder: backtick karakter bevestigen (kan platform-afhankelijk zijn)
+- [ ] Power management herzien: keyboard halves zijn nu BLE peripherals op batterij — `CONFIG_ZMK_DISPLAY_BLANK_ON_IDLE` en `CONFIG_ZMK_SLEEP` mogelijk op `y` zetten voor energiebesparing
+- [ ] Batterij pairing volgorde: linker helft eerst, dan rechter helft (vereist voor Prospector peripheral battery bar)
