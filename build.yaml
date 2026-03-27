@@ -24,9 +24,16 @@
 
 ---
 include:
+  # --- Settings reset (flash these first to clear BLE bonds) ---
   - board: seeeduino_xiao_ble
-    shield: sofle_dongle prospector_adapter
+    shield: settings_reset
   - board: nice_nano_v2
-    shield: sofle_left nice_oled
-  - board: nice_nano_v2
-    shield: sofle_right nice_oled
+    shield: settings_reset
+
+  # --- Firmware ---
+  # - board: seeeduino_xiao_ble
+  #   shield: sofle_dongle prospector_adapter
+  # - board: nice_nano_v2
+  #   shield: sofle_left nice_oled
+  # - board: nice_nano_v2
+  #   shield: sofle_right nice_oled
