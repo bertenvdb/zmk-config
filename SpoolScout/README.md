@@ -1,97 +1,87 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# SpoolScout
 
-# Getting Started
+React Native app for managing 3D printing filament spools via a self-hosted [Spoolman](https://github.com/Donkie/Spoolman) instance.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- **Spool management** — full CRUD against Spoolman: list, create, edit, delete
+- **NFC read/write** — OpenSpool 1.0 format with `spoolman_id` extension; supports NTAG 215/216 (rejects NTAG 213)
+- **Foreground NFC scan** — Quick Action card appears when a tag is scanned while the app is open
+- **Background NFC launch** — scanning a tag while the app is closed opens it directly to the Quick Action card
+- **Quick Action card** — update remaining weight, change location, set/unset active spool in Moonraker
+- **Moonraker integration** — optional; active-spool tracking is hidden when not configured
+- **Manufacturer brand overrides** — map Spoolman vendor names to BambuStudio-compatible brand strings for NFC tags
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Requirements
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Android 8.0+ (API 26+) — primary platform
+- Node.js 22+
+- JDK 17
+- Android Studio + Android SDK
 
-```sh
-# Using npm
-npm start
+> iOS is not supported in v1 (Apple restricts background NFC launch for `application/json` MIME records).
 
-# OR using Yarn
-yarn start
+## Development setup
+
+```bash
+# Install JS dependencies
+npm install
+
+# Start Metro bundler
+npx react-native start
+
+# Build and deploy to connected device / emulator
+npx react-native run-android
 ```
 
-## Step 2: Build and run your app
+## Building an APK locally
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+cd android
+./gradlew assembleRelease
+# Output: android/app/build/outputs/apk/release/app-release.apk
 ```
 
-### iOS
+## Creating a release
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+Push a version tag — GitHub Actions builds the APK and publishes a GitHub Release automatically:
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
-Then, and every time you update your native dependencies, run:
+The release APK is signed with the debug key by default (fine for sideloading). To use a production keystore, add these four repository secrets:
 
-```sh
-bundle exec pod install
+| Secret | Description |
+|--------|-------------|
+| `KEYSTORE_BASE64` | `base64 -w0 your-release.keystore` |
+| `KEYSTORE_PASSWORD` | Keystore password |
+| `KEY_ALIAS` | Key alias |
+| `KEY_PASSWORD` | Key password |
+
+Generate a keystore:
+```bash
+keytool -genkey -v \
+  -keystore spoolscout-release.keystore \
+  -alias spoolscout \
+  -keyalg RSA -keysize 2048 -validity 10000
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Configuration
 
-```sh
-# Using npm
-npm run ios
+Open the **Settings** tab and enter:
 
-# OR using Yarn
-yarn ios
-```
+- **Spoolman URL** (required) — e.g. `http://192.168.1.10:7912`
+- **Moonraker URL** (optional) — e.g. `http://192.168.1.10:7125`
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Tech stack
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+| Concern | Package |
+|---------|---------|
+| Framework | React Native 0.85.3 (bare CLI) |
+| Language | TypeScript 5 |
+| Navigation | React Navigation 7 |
+| NFC | react-native-nfc-manager |
+| Storage | @react-native-async-storage/async-storage |
+| Build | Gradle |
